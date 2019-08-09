@@ -19,7 +19,7 @@ build:
 #     - gem uninstall bundler -v 2.0.1
 #     - gem install bundler -v 1.3.0
     - bundle install
-    - rails db:setup
+    # - rails db:setup
     - rails db:migrate
     - rspec
 
