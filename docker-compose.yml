@@ -5,20 +5,19 @@ services:
     container_name: rails_server
     ports:
     - 3000:3000
-    # volumes:
-    # - .:/data
     restart: "no"
     tty: true
     stdin_open: true
-    # environment:
-    #   - GEM_HOME=${APP_PATH}/vendor/bundle
-    #   - BUNDLE_PATH=${APP_PATH}/vendor/bundle
-    #   - BUNDLE_APP_CONFIG=${APP_PATH}/vendor/bundle
-    #   - PATH=$PATH:${APP_PATH}/vendor/bundle/bin
-    command: "/codebase/bin/rails s -b 0.0.0.0"
     working_dir: "/codebase"
+    command: bash -c "
+             rails db:migrate &&
+             rm -f tmp/pids/server.pid &&
+             rails s -b 0.0.0.0"
+    # volumes:
+    #   - syrincs1:/syrincs1
 
 ### when volumes are not being generated from compose
 # volumes:
 #   data:
 #     external: true
+#     driver: local
