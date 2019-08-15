@@ -7,20 +7,20 @@ services:
   - sqlite
 
 build:
-#   pre_ci_boot:
-#       image_name: drydock/u14ruball
-#       image_tag: latest
-#       pull: true
-#       env: FOO=bar
-#       options: "-e HOME=/root"
+  # pre_ci_boot:
+  #     image_name: drydock/u14ruball
+  #     image_tag: latest
+  #     pull: true
+  #     env: FOO=bar
+  #     options: "-e HOME=/root"
   env:
     - RAILS_ENV=production
   ci:
-#     - cp config/database.shippable.yml config/database.yml
-#     - gem uninstall bundler -v 2.0.1
-#     - gem install bundler -v 1.3.0
+    # - cp config/database.shippable.yml config/database.yml
+    # - gem uninstall bundler -v 2.0.1
+    # - gem install bundler -v 1.3.0
+    # - rails db:setup
     - bundle install
-    - rails db:setup
     - rails db:migrate
     - rails assets:precompile
     - rspec
