@@ -15,6 +15,7 @@ COPY Gemfile* /tmp/
 WORKDIR /tmp
 RUN bundle install
 
+ENV RAILS_ENV production
 ENV codebase /codebase
 RUN mkdir $codebase
 WORKDIR $codebase

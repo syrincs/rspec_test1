@@ -13,8 +13,6 @@ build:
   #     pull: true
   #     env: FOO=bar
   #     options: "-e HOME=/root"
-  env:
-    - RAILS_ENV=production
   ci:
     # - cp config/database.shippable.yml config/database.yml
     # - gem uninstall bundler -v 2.0.1
@@ -22,11 +20,10 @@ build:
     # - rails db:setup
     - bundle install
     - rails db:migrate
-    - rails assets:precompile
     - rspec
   post_ci:
     - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest .
-    - aws ecr get-login --no-include-email | bash
+    # - aws ecr get-login --no-include-email | bash
     - docker push 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
 
 integrations:                               
