@@ -1,7 +1,7 @@
 version: "3"
 services:
   web:
-    image: rspec_test1:latest
+    image: 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
     container_name: rails_server
     ports:
     - 3000:3000
@@ -13,11 +13,15 @@ services:
              rails db:migrate &&
              rm -f tmp/pids/server.pid &&
              rails s -b 0.0.0.0"
+    deploy:
+      replicas: 3
     # volumes:
-    #   - syrincs1:/syrincs1
+    #       - syrincs1:/shared_data
 
-### when volumes are not being generated from compose
 # volumes:
-#   data:
-#     external: true
-#     driver: local
+#   syrincs1:
+#     driver: "cloudstor:aws"
+#     driver_opts:
+#       backing: relocatable
+#       size: 2
+#       ebstype: gp2

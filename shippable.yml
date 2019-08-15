@@ -13,17 +13,26 @@ build:
 #       pull: true
 #       env: FOO=bar
 #       options: "-e HOME=/root"
-
+  env:
+    - RAILS_ENV=production
   ci:
 #     - cp config/database.shippable.yml config/database.yml
 #     - gem uninstall bundler -v 2.0.1
 #     - gem install bundler -v 1.3.0
     - bundle install
-    # - rails db:setup
+    - rails db:setup
     - rails db:migrate
+    - rails assets:precompile
     - rspec
+  post_ci:
+    - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest .
+    - docker push 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
 
 integrations:                               
+  hub:
+    - integrationName: aws_ecr_keys
+      type: ecr
+
   notifications:
     - integrationName: email
       type: email
