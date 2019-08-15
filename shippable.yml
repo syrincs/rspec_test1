@@ -32,6 +32,7 @@ build:
 integrations:                               
   hub:
     - integrationName: aws_ecr_keys
+      region: eu-central-1
       type: ecr
 
   notifications:
