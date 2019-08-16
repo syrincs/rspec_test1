@@ -6,13 +6,14 @@ COPY Gemfile* /tmp/
 WORKDIR /tmp
 RUN bundle install
 
-ARG RAILS_MASTER_KEY
-RUN echo $RAILS_MASTER_KEY > config/master.key
-ENV RAILS_ENV production
-
 ENV codebase /codebase
 RUN mkdir $codebase
 WORKDIR $codebase
+
+ENV RAILS_ENV production
+ARG RAILS_MASTER_KEY
+RUN echo $RAILS_MASTER_KEY > config/master.key
+
 ADD . $codebase
 
 RUN RAILS_ENV=staging rails assets:precompile
