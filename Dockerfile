@@ -21,5 +21,5 @@ RUN mkdir $codebase
 WORKDIR $codebase
 ADD . $codebase
 
-RUN RAILS_ENV=staging bundle exec rake assets:precompile
-RUN RAILS_ENV=production bundle exec rake assets:precompile
+# RUN RAILS_ENV=staging rails assets:precompile
+RUN RAILS_ENV=production rails assets:precompile
