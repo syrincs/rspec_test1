@@ -12,7 +12,7 @@ WORKDIR $codebase
 
 ENV RAILS_ENV production
 ARG RAILS_MASTER_KEY
-RUN echo $RAILS_MASTER_KEY > config/master.key
+RUN echo $RAILS_MASTER_KEY > $codebase/config/master.key
 
 ADD . $codebase
 
