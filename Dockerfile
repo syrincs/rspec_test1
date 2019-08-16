@@ -13,8 +13,7 @@ ADD . $codebase
 
 ENV RAILS_ENV production
 ARG RAILS_MASTER_KEY
-RUN echo $RAILS_MASTER_KEY > master.key
-COPY master.key $codebase/config/
+# RUN echo $RAILS_MASTER_KEY > master.key
 
 RUN RAILS_ENV=staging rails assets:precompile
 RUN RAILS_ENV=production rails assets:precompile
