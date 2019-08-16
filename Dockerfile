@@ -21,5 +21,8 @@ RUN mkdir $codebase
 WORKDIR $codebase
 ADD . $codebase
 
-# RUN RAILS_ENV=staging rails assets:precompile
+ARG RAILS_MASTER_KEY
+RUN echo $RAILS_MASTER_KEY > $codebase/config/master.key
+
+RUN RAILS_ENV=staging rails assets:precompile
 RUN RAILS_ENV=production rails assets:precompile

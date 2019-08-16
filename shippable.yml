@@ -5,6 +5,8 @@ rvm:
  
 services:
   - sqlite
+env:
+  - secure: I3OFqajyIPkrjbcQvi2agByIGI47IJBGS8vPodG+1UH0qXklJSzjceAq91MGvc36GCQu5XrvhgjBeGcYafB0fbCMDR9fsag8R5MKan1tFBJvk0goAEFuH5wfcBmcLPMY/KKPEZWaLGZULbPPRqjHpeS9NRFs2PkmPOf4DPBxIuytEKcqy8+YavgF2IDnNl0dH09a6pnBlBJ6/Swhdaizz9ZhFnrlnUjdaluP355cLDOb8KhnJSwGhnwukhOSXeKTJniwlv993HWnT472sgt+FUSQvpaZRq6usDZmve4KP0E0Q0mHfMWQwiHEmrz3HWmFCZUxbxBQhJpbTTDAmRxt3A==
 
 build:
   # pre_ci_boot:
@@ -22,7 +24,7 @@ build:
     - rails db:migrate
     - rspec
   post_ci:
-    - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest .
+    - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY .
     - docker push 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
 
 integrations:                               
