@@ -15,6 +15,7 @@ ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
 ENV RAILS_ENV production
+ENV RAILS_SERVE_STATIC_FILES true
 
 RUN RAILS_ENV=staging rails assets:precompile
 RUN RAILS_ENV=production rails assets:precompile
