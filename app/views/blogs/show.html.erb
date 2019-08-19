@@ -10,5 +10,15 @@
   <%= @blog.description %>
 </p>
 
+<p>
+  <strong>Amount:</strong>
+  <%= @blog.amount %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @blog.author %>
+</p>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

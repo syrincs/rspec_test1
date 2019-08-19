@@ -24,8 +24,8 @@ build:
     - rails db:migrate
     - rspec
   post_ci:
-    - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY .
-    - docker push 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
+    - docker build -t 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:v1.1 --build-arg RAILS_MASTER_KEY=$RAILS_MASTER_KEY .
+    - docker push 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:v1.1
 
 integrations:                               
   hub:
