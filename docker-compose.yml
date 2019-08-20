@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     image: 069194799098.dkr.ecr.eu-central-1.amazonaws.com/rspec-test1:latest
-    container_name: rails_server
+    stop_grace_period: 30s
     ports:
     - 3000:3000
     restart: "no"
@@ -15,8 +15,19 @@ services:
              rails s -b 0.0.0.0"
     deploy:
       replicas: 3
+      update_config:
+        delay: 10s
+        parallelism: 1
+        failure_action: rollback
     # volumes:
     #       - syrincs1:/shared_data
+    # depends_on:
+    #   - db
+    #   - redis
+  # redis:
+  #   image: redis
+  # db:
+  #   image: postgres             
 
 # volumes:
 #   syrincs1:
