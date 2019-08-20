@@ -167,4 +167,11 @@ RSpec.describe Blog, type: :model do
     #   # expect(invitation).to have_received(:deliver).with("bar@example.com").ordered
     # end
   end
+
+  context "validation tests" do
+    it "ensures name presence" do
+      blog = Blog.new(description: 'foobar').save
+      expect(blog).to eq(false)
+    end
+  end 
 end
