@@ -34,7 +34,7 @@ integrations:
     #   type: ecr
     #
     - integrationName: gitlab
-      type: docker
+      type: dockerRegistryLogin
 
   notifications:
     - integrationName: email
