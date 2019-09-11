@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: /shared_data/production.sqlite3
+  database: /swarm/volumes/production.sqlite3
