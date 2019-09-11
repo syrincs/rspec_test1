@@ -33,7 +33,7 @@ integrations:
     #   region: eu-central-1
     #   type: ecr
     #
-    - integrationName: gitlab2
+    - integrationName: gitlabregistry
       type: dockerRegistryLogin
 
   notifications:
